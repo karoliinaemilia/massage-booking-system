@@ -6,13 +6,11 @@ appointmentsRouter.use(bodyParser.json())
 const bcrypt = require('bcrypt')
 const jsonWebToken = require('jsonwebtoken')
 const User = require('../models/user')
-const Masseusse = require('../models/masseusse')
 const ruleChecker = require('../utils/bookingRuleChecker')
 
 const formatAppointment = input => {
   return {
     _id: input._id,
-    masseusse_id: input.masseusse_id,
     user_id: input.user_id,
     start_date: input.start_date,
     end_date: input.end_date,
@@ -45,20 +43,14 @@ appointmentsRouter.post('/', async (req, res, next) => {
     const body = req.body
     const user = await User.findById(body.user_id)
 
-    // TODO -- ADD Own appointments for Masseusse as well??
-    // TODO -- ADD Own appointments for Masseusse as well??
-    // TODO -- ADD Own appointments for Masseusse as well??
-    const masseusse = await Masseusse.findById(body.masseusse_id)
-
     // No error is given if either of searched items is null.
     // Have to create an explicit if-statement
-    if (!(user && masseusse)) {
+    if (!(user)) {
       res.status(400).end()
       return
     }
 
     const appointment = new Appointment({
-      masseusse_id: body.masseusse_id,
       user_id: body.user_id,
     })
 
@@ -186,7 +178,7 @@ appointmentsRouter.post('/:date', async (req, res, next) => {
 })
 
 /**
- *Removes appointment from user and removes user and masseusse from appointment
+ *Removes appointment from user and removes user from appointment
  */
 
 removeAppointment = async(appointment) =>{
@@ -196,7 +188,6 @@ removeAppointment = async(appointment) =>{
     user.appointments = appointmentsToKeep
 
     appointments.user_id = null
-    appointment.masseusse_id = null
     appointment.type_of_reservation = 3
     
     user = await User.findByIdAndUpdate(user._id, user)

@@ -34,7 +34,7 @@ const Appointment = require('../models/appointment')
   const nextSixMonths = (date) =>{
     for(i = 0; i < 168;i+=7){
       //console.log('index', i)
-      var newDate = new Date(date)
+      let newDate = new Date(date)
       pickDays(new Date(newDate.setDate(date.getDate() + i)))
     }
   }
