@@ -35,8 +35,8 @@ const User = props => {
         {avatarUrl ? (
           <img src={avatarUrl} alt="profile pic" height="50" width="50" />
         ) : (
-            'avatar'
-          )}
+          'avatar'
+        )}
       </td>
       <td>{name} </td>
       <td>{email}</td>

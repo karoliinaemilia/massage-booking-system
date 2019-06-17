@@ -9,8 +9,8 @@ const UserList = props => {
     filter === ''
       ? users
       : users.filter(user =>
-          user.name.toLowerCase().startsWith(filter.toLowerCase())
-        )
+        user.name.toLowerCase().startsWith(filter.toLowerCase())
+      )
 
   const filterChange = event => {
     setFilter(event.target.value)
