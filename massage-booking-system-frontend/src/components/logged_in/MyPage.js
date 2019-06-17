@@ -36,6 +36,7 @@ const MyPage = () => {
 
   // NOTICE -- user && rest rendered. Otherwise nothing gets rendered
   return (
+
     user && (
       <div className="mypage_wrapper">
         <div className="own_info">
@@ -68,6 +69,7 @@ const MyPage = () => {
         </div>
       </div>
     )
+
   )
 }
 
