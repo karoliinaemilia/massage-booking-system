@@ -11,7 +11,7 @@ const MyPage = () => {
   useEffect(() => {
     if (!user) return
     numberField.changeValue(user.number)
-  }, [user])
+  }, [numberField, user])
 
   // TODO TODO TODO -- RESET NUMBER ON FORM SUBMIT?
   // TODO TODO TODO -- RESET NUMBER ON FORM SUBMIT?
@@ -38,8 +38,8 @@ const MyPage = () => {
       {user.avatarUrl ? (
         <img src={user.avatarUrl} alt="profile pic" height="100" width="100" />
       ) : (
-          'avatar'
-        )}
+        'avatar'
+      )}
       <label>Phone number</label>
       <form onSubmit={handleNumberUpdate}>
         <input

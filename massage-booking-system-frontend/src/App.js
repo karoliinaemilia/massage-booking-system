@@ -56,12 +56,12 @@ const App = () => {
     userService.getAll()
     appointmentService.getAll()
     statsService.getAll()
-  }, [])
+  }, [appointmentService, statsService, userService])
 
   useEffect(() => {
     user &&
       userService.getOne(user._id).then(refreshedUser => setUser(refreshedUser))
-  }, [appointments])
+  }, [appointments, user, userService])
 
   return (
     <Fragment>

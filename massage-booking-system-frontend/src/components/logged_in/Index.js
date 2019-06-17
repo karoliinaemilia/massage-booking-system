@@ -48,8 +48,8 @@ const AuthIndex = ({ user }) => {
               ).length > 0
                 ? 'availableDay'
                 : view === 'month' && date.getDay() < 3 && date.getDay() !== 0
-                ? 'nonAvailableDay'
-                : 'disabled'
+                  ? 'nonAvailableDay'
+                  : 'disabled'
             }
             tileDisabled={({ date, view }) =>
               view === 'month' && (date.getDay() > 2 || date.getDay() === 0)
@@ -67,14 +67,14 @@ const AuthIndex = ({ user }) => {
               <Appointments />
             </div>
           ) : (
-              <div>
-                <h1>Own appointments</h1>
-                <button className="buttonList" onClick={() => setTab(!tab)}>
+            <div>
+              <h1>Own appointments</h1>
+              <button className="buttonList" onClick={() => setTab(!tab)}>
                   All appointments
               </button>
-                <Appointments type={OWN_APPOINTMENTS} />
-              </div>
-            )}
+              <Appointments type={OWN_APPOINTMENTS} />
+            </div>
+          )}
           {/* <img id="unity4" src={unity4}></img> */}
         </div>
       </div>
