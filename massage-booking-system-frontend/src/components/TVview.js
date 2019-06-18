@@ -1,5 +1,4 @@
 import React, { useContext} from 'react'
-import WeeksAppointments from './WeeksAppointments';
 import Appointment from './logged_in/Appointment'
 import { AppointmentContext, UserContext } from '../App'
 import Clock from './Clock'
@@ -47,7 +46,7 @@ const TVview = () => {
 
     return (
         <div className="tv_view">
-          <div>
+          <div className="next">
             <Clock />
             
             <h2>NEXT APPOINTMENT</h2>
