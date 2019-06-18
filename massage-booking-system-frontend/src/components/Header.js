@@ -2,7 +2,12 @@ import React from 'react'
 import logo from '../pics/unity5.png'
 
 import {
-  Link
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+  withRouter,
 } from 'react-router-dom'
 
 const AuthHeader = ({ user }) => {
@@ -16,9 +21,7 @@ const AuthHeader = ({ user }) => {
           className="fas fa-bars"
         />
       </span>
-      <Link to="/">
-        <img src={logo} className="logo" />
-      </Link>
+      <img src={logo} className="logo" />
       <ul className="main-nav" id="js-menu">
         <li>
           <Link className="nav-link" to="/">

@@ -18,8 +18,9 @@ authRouter.get(
 )
 
 authRouter.get('/logout', (req, res) => {
-  req.session = null
+  req.logout()
   res.redirect('/')
+  // res.send(req.user)
 })
 
 module.exports = authRouter

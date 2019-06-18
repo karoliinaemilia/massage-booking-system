@@ -1,75 +1,47 @@
-import React, { useContext, useEffect } from 'react'
-import { UserContext, NotificationContext } from '../../App'
-import AppointmentsList from './AppointmentsLists'
+import React, { useContext } from 'react'
+import { UserContext } from '../../App'
 import useField from '../../hooks/useField'
+import AppointmentsList from './AppointmentsLists'
 
-const MyPage = () => {
+const MyPage = props => {
   const { user, setUser, userService } = useContext(UserContext)
-  const { createNotification } = useContext(NotificationContext)
+  console.log('user: ', user)
 
-  let numberField = useField('text')
-  useEffect(() => {
-    console.log('HEEEIi')
-    if (!user) return
-    numberField.changeValue(user.number)
-  }, [user])
+  const numberField = useField('text', user.number)
 
-  // TODO TODO TODO -- RESET NUMBER ON FORM SUBMIT?
-  // TODO TODO TODO -- RESET NUMBER ON FORM SUBMIT?
-  // TODO TODO TODO -- RESET NUMBER ON FORM SUBMIT?
   const handleNumberUpdate = async event => {
     event.preventDefault()
-    try {
-      const number = numberField.value
-      console.log('number: ', number)
+    console.log('event', event)
+    const number = numberField.value
+    const updatedUser = { ...user, number }
+    const type = 'user'
 
-      const updatedUser = { ...user, number }
-      const type = 'user'
-
-      setUser(updatedUser)
-      await userService.update(user._id, updatedUser, type)
-      createNotification('Succesfully changed number', 'success')
-    } catch (exception) {
-      createNotification('Unable to change number')
-    }
+    setUser(updatedUser)
+    await userService.update(user._id, updatedUser, type)
   }
 
-  // NOTICE -- user && rest rendered. Otherwise nothing gets rendered
   return (
-
-    user && (
-      <div className="mypage_wrapper">
-        <div className="own_info">
-          <h2>{user.name}</h2>
-          {user.avatarUrl ? (
-            <img
-              src={user.avatarUrl}
-              alt="profile pic"
-              height="180"
-              width="180"
-            />
-          ) : (
-            'avatar'
-          )}
-          <label>Phone number</label>
-        </div>
-        <form onSubmit={handleNumberUpdate}>
-          <input
-            type={numberField.type}
-            id="number"
-            value={numberField.value}
-            name="number"
-            onChange={numberField.handleFieldChange}
-          />
-          <button type="submit">Update</button>
-        </form>
-        <div className="own_appointments">
-          <h2>My Appointments</h2>
-          <AppointmentsList />
-        </div>
-      </div>
-    )
-
+    <div className="mypage_wrapper">
+      <p>{user.name}</p>
+      {user.avatarUrl ? (
+        <img src={user.avatarUrl} alt="profile pic" height="100" width="100" />
+      ) : (
+        'avatar'
+      )}
+      <label>Phone number</label>
+      <form onSubmit={handleNumberUpdate}>
+        <input
+          type={numberField.type}
+          id="number"
+          value={numberField.value}
+          name="number"
+          onChange={numberField.handleFieldChange}
+        />
+        <button type="submit">Update</button>
+      </form>
+      <h2>My Appointments</h2>
+      <AppointmentsList />
+    </div>
   )
 }
 

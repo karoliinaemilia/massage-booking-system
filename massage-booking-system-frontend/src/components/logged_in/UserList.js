@@ -9,8 +9,8 @@ const UserList = props => {
     filter === ''
       ? users
       : users.filter(user =>
-        user.name.toLowerCase().startsWith(filter.toLowerCase())
-      )
+          user.name.toLowerCase().startsWith(filter.toLowerCase())
+        )
 
   const filterChange = event => {
     setFilter(event.target.value)
@@ -19,7 +19,7 @@ const UserList = props => {
     <div className="dashboard_wrapper">
       <div className="overflowX">
         <div className="user_search">
-          <i className="fas fa-search" />
+          <i class="fas fa-search" />
           <input value={filter} onChange={filterChange} placeholder="Search" />
         </div>
         <table>

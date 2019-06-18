@@ -18,7 +18,6 @@ let sunday = timer.formatTime(new Date('July 21, 2019 12:00:00'))
 
 /**
  * IF TESTS FAIL GO TO tests/applicationGeneration/test_helper.js and increse the time in the loop of the function "emptyTheDatabaseOfAppointments"
- * FREE DB CAN BE SLOW.
  */
 describe('with any date', () => {
     beforeEach(async () => {

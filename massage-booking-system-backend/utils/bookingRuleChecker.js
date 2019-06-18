@@ -12,14 +12,7 @@ const userAllowedToMakeAppointment = async (
     //console.log('users appointment history ', usersPreviousMassageTimes)
 
     let now = moment()
-
-    //fix timezone difference from db
-    let date = new Date(appointment.start_date)
-    let minutes = date.getMinutes()
-    let time = date.getTimezoneOffset()
-    date.setMinutes(minutes + time)
-
-    let appointmentTimeMoment = moment(date)
+    let appointmentTimeMoment = moment(appointment.start_date)
     console.log('appointmentTimeMoment', appointmentTimeMoment)
     /*  Checks that requested appointment is in the future. Cant book past appointments */
     if (appointmentTimeMoment.isBefore(now)) {

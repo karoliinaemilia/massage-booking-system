@@ -2,11 +2,12 @@ const http = require('http')
 const app = require('./app')
 const config = require('./utils/config')
 const server = http.createServer(app)
-const scheduler = require('./utils/scheduler')
-/**
- * scheduler schedules appointment generation for the next 6 months when necissary
- */
+//const gen = require('./utils/appointmentGenerator')
+//everyWeek = every week at given times this method is scheduled to check the database and populate it with appointments when necissary
 server.listen(config.PORT, () => {
   console.log(`Server running on port ${config.PORT}`)
-  scheduler.everyDay
-})
+ /* let date = new Date()
+  date.setUTCHours(8,55,0,0)
+  gen.generateAppointmentsForDay(date)
+  console.log('toimi')
+*/})

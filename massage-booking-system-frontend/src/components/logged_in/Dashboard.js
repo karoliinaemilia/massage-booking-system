@@ -1,32 +1,12 @@
-import React, {useContext, useState} from 'react'
+import React from 'react'
 import UserList from './UserList'
-import {NotificationContext} from '../../App'
 
+// TODO -- LIST FOLLOWING USERS (by toggle etc..)
+// 1. List of all banned users
+// 2. List of all priviledged users (masseusses, admins)
 const DashBoard = props => {
-  const {announcement, setAnnouncement} = useContext(NotificationContext)
-  const [editedAnnouncement, setEditedAnnouncement] = useState()
-  const handleFieldChange = (event) => {
-    console.log(event.target.value)
-    setEditedAnnouncement(event.target.value)
-  }
-  const changeAnnouncement = (event) => {
-    console.log('changeAnnouncement', editedAnnouncement)
-    event.preventDefault()
-    setAnnouncement(editedAnnouncement)
-  }
-  return(
-
-    <div>
-    <form className="dashboard_form"onSubmit= {changeAnnouncement}>
-      <input className="dashboard_announcement"
-        value ={editedAnnouncement}
-        onChange ={handleFieldChange}
-      />
-      <button className="dashboard_announcement_button" type= "submit">Update</button>
-    </form>
-    <UserList/>  
-    </div>
-  )
+  //console.log('We are in dashboard', props)
+  return <UserList />
 }
 
 export default DashBoard
